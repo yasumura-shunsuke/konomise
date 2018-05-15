@@ -1,0 +1,9 @@
+<div class="text-left">
+  <h1>グループ一覧</h1>
+  <%= link_to 'グループを新規作成する', new_group_path, class: 'btn btn-lg btn-primary' %>
+  <li>現在のグループ数 <%= @count_groups %>グループ</li>
+</div>
+
+<%= render 'groups/groups', groups: @groups %>
+
+<%= link_to 'サービスTOPへ', root_path, class: 'btn btn-lg btn-primary' %>
