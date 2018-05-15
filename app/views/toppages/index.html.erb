@@ -1,5 +1,15 @@
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+    <div class="text-center">
+      <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+      <h1><%= link_to 'グループ一覧', groups_path, class: 'btn btn-lg btn-primary' %></h1>
+    </div>
+<% else %>
 <div class="center jumbotron">
   <div class="text-center">
-    <h1>サービス一覧へ（後でリンク追加）</h1>
+    <h1>Welcome to konomise!</h1>
+    <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
   </div>
 </div>
+<% end %>
