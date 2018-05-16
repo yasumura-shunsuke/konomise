@@ -1,11 +1,24 @@
 <ul class="media-list">
   <% groups.each do |group| %>
-    <li class="media">
-      <div class="media-body">
-        <div>
-          <p><%= group.title %></p>
-        </div>
-      </div>
-    </li>
+    <% if current_user.join?(group) %>
+        <li class="media">
+          <div class="media-body">
+            <div>
+              <%= link_to group.title, group_path(group) %><%= link_to group.user, group_path(group) %><%= link_to group.sentence, group_path(group) %>
+              <%= render 'relationships/join_button', group: group %>
+            </div>
+          </div>
+        </li>
+      <% else %>
+        <li class="media">
+          <div class="media-body">
+            <div>
+              <p><%= group.title %>、<%= group.user %>、<%= group.sentence %></p>
+              <%= render 'relationships/join_button', group: group %>
+            </div>
+          </div>
+        </li>
+    <% end %>
   <% end %>
 </ul>
+

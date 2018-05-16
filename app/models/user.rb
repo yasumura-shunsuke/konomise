@@ -8,4 +8,20 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :groups
+  has_many :relationships
+  has_many :user_groups, through: :relationships, source: :group
+  
+  def join(group)
+    self.relationships.find_or_create_by(group_id: group.id)
+  end
+
+  def exit(group)
+    relationship = self.relationships.find_by(group_id: group.id)
+    relationship.destroy if relationship
+  end
+
+  def join?(group)
+    self.user_groups.include?(group)
+  end
+  
 end

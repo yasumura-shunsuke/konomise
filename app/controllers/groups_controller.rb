@@ -2,11 +2,14 @@ class GroupsController < ApplicationController
   before_action :require_user_logged_in
   
   def index
-    @groups = Group.all
+    @groups = Group.all.order('updated_at DESC')
     @count_groups = @groups.count
+    @user = current_user
   end
 
   def show
+    @group = Group.find(params[:id])
+    @members = @group.group_users
   end
 
   def new

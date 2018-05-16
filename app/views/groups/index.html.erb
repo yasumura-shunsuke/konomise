@@ -1,7 +1,7 @@
 <div class="text-left">
   <h1>グループ一覧</h1>
-  <%= link_to 'グループを新規作成する', new_group_path, class: 'btn btn-lg btn-primary' %>
-  <li>現在のグループ数 <%= @count_groups %>グループ</li>
+    <%= link_to 'グループを新規作成する', new_group_path, class: 'btn btn-lg btn-primary' %>
+  <h4>現在のグループ数 <%= @count_groups %>グループ</h4>
 </div>
 
 <%= render 'groups/groups', groups: @groups %>

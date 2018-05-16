@@ -1,2 +1,16 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div class="text-left">
+  <h4>グループタイトル</h4>
+    <%= @group.title %>
+  <h4>グループメンバー</h4>
+    <%= @members %>
+  <h4>説明文</h4>
+    <%= @group.sentence %>
+  <h4>コメント</h4>
+  
+  <%= form_for(@group) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :sentence, class: 'form-control', rows: 5 %>
+    </div>
+      <%= f.submit 'コメントする', class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>
