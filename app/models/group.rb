@@ -7,4 +7,6 @@ class Group < ApplicationRecord
   
   has_many :relationships
   has_many :group_users, through: :relationships, source: :user
+  
+  has_many :posts
 end

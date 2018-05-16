@@ -7,10 +7,11 @@
     <%= @group.sentence %>
   <h4>コメント</h4>
   
-  <%= form_for(@group) do |f| %>
+  <%= form_for(@post) do |f| %>
     <div class="form-group">
-      <%= f.text_area :sentence, class: 'form-control', rows: 5 %>
+      <%= f.text_area :content, class: 'form-control', rows: 5 %>
     </div>
       <%= f.submit 'コメントする', class: 'btn btn-primary btn-block' %>
+      <%= f.hidden_field :group_id, value: @group.id %>
   <% end %>
 </div>

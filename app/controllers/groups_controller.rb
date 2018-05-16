@@ -10,6 +10,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @members = @group.group_users
+    @post = @group.posts.build
+    @created_posts = @group.posts
   end
 
   def new

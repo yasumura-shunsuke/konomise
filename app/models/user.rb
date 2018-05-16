@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :relationships
   has_many :user_groups, through: :relationships, source: :group
   
+  has_many :posts
+  
   def join(group)
     self.relationships.find_or_create_by(group_id: group.id)
   end
