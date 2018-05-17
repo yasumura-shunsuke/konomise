@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :groups
   resources :relationships, only: [:create, :destroy]
   resources :posts, only: [:create, :destroy]
+  resources :restaurants, only: [:index, :show, :new, :create]
 end

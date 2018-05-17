@@ -4,7 +4,7 @@
         <li class="media">
           <div class="media-body">
             <div>
-              <%= link_to group.title, group_path(group) %><%= link_to group.user, group_path(group) %><%= link_to group.sentence, group_path(group) %>
+              <p><%= link_to group.title+'、', group_path(group) %><%= link_to group.user.name+'、', group_path(group) %><%= link_to group.sentence, group_path(group) %></p>
               <%= render 'relationships/join_button', group: group %>
             </div>
           </div>
@@ -13,7 +13,7 @@
         <li class="media">
           <div class="media-body">
             <div>
-              <p><%= group.title %>、<%= group.user %>、<%= group.sentence %></p>
+              <p><%= group.title+'、' %><%= group.user.name+'、' %><%= group.sentence %></p>
               <%= render 'relationships/join_button', group: group %>
             </div>
           </div>

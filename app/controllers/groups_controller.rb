@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @members = @group.group_users
     @post = @group.posts.build
-    @created_posts = @group.posts
+    @created_posts = @group.posts.page(params[:page]).per(5)
   end
 
   def new
@@ -31,15 +31,27 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
+    render :new
   end
 
   def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      flash[:success] = 'グループ登録情報を更新しました'
+      redirect_to action: :index
+    else
+      flash.now[:danger] = 'グループ登録情報を更新できませんでした'
+      render :new
+    end
+    
   end
 
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
     flash[:success] = 'グループを削除しました。'
-    redirect_back(fallback_location: :index)
+    redirect_to action: :index
   end
   
   private

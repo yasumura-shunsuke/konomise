@@ -5,8 +5,8 @@ class Group < ApplicationRecord
   validates :user_id, presence: true
   validates :sentence, presence: true, length: { maximum: 100 }
   
-  has_many :relationships
+  has_many :relationships, :dependent => :destroy
   has_many :group_users, through: :relationships, source: :user
   
-  has_many :posts
+  has_many :posts, :dependent => :destroy
 end

@@ -1,8 +1,16 @@
+<%= link_to 'グループ一覧へ', groups_path, class: 'btn btn-lg btn-primary' %>
+<%= link_to "削除", @group, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+<%= link_to '編集', edit_group_path, class: 'btn btn-lg btn-primary' %>
+
 <div class="text-left">
   <h4>グループタイトル</h4>
     <%= @group.title %>
   <h4>グループメンバー</h4>
-    <%= @members %>
+    <% @members.each do |member| %>
+      <li class="media">
+        <%= member.name %>
+      </li>
+    <% end %>
   <h4>説明文</h4>
     <%= @group.sentence %>
   <h4>コメント</h4>
@@ -11,7 +19,31 @@
     <div class="form-group">
       <%= f.text_area :content, class: 'form-control', rows: 5 %>
     </div>
-      <%= f.submit 'コメントする', class: 'btn btn-primary btn-block' %>
+      <%= f.submit '書き込む', class: 'btn btn-primary btn-block' %>
       <%= f.hidden_field :group_id, value: @group.id %>
   <% end %>
+  
+  <%= paginate(@created_posts) %>
+  <% @created_posts.each do |created_post| %>
+    <li class="media">
+      <div class="media-body">
+        <div>
+          <%= created_post.user.name %>
+        </div>
+        <div>
+          <%= created_post.content %>
+        </div>
+        <div>
+          <%= created_post.created_at %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  
 </div>
+
+<style>
+  li {
+    list-style-type: none;
+  }
+</style>

@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     private
 
   def post_params
-    params.require(:post).permit([:content, :user_id, :group_id])
+    params.require(:post).permit([:content, :user_id, :group_id, :created_at])
   end
   
 end
