@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   
   def counts(user)
     @count_groups = groups.count
+    @count_restaurants = restaurants.count
   end
   
 end
