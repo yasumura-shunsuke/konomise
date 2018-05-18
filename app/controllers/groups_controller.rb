@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     @members = @group.group_users
     @post = @group.posts.build
     @created_posts = @group.posts.page(params[:page]).per(5)
+    @like_reataurants = @group.favorites.page(params[:page]).per(5)
   end
 
   def new

@@ -45,6 +45,17 @@
   <% end %>
 
   <hr align="center">
+  <h4>グループで行きたいお店</h4>
+  <%= paginate(@like_reataurants) %>
+  <% @like_reataurants.each do |like_reataurant| %>
+    <li class="media">
+      <div class="media-body">
+        <div>
+          <%= like_reataurant.restaurant.name %>、<%= like_reataurant.restaurant.area %>
+        </div>
+      </div>
+    </li>
+  <% end %>
 
 </div>
 
