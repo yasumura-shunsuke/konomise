@@ -26,7 +26,7 @@
       <%= f.hidden_field :group_id, value: @group.id %>
    <% end %>
  <hr align="center">
-  <%= link_to 'グループで行きたいお店を追加', restaurants_path, class: 'btn btn-lg btn-primary' %>
+  <%= link_to 'グループで行きたいお店を追加', restaurant_search_group_path, class: 'btn btn-lg btn-primary' %>
   <%= paginate(@created_posts) %>
   <% @created_posts.each do |created_post| %>
     <li class="media">

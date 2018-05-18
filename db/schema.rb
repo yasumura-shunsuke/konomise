@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517090151) do
+ActiveRecord::Schema.define(version: 20180518060020) do
+
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_favorites_on_group_id"
+    t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -57,6 +68,9 @@ ActiveRecord::Schema.define(version: 20180517090151) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "favorites", "groups"
+  add_foreign_key "favorites", "restaurants"
+  add_foreign_key "favorites", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "relationships", "groups"
   add_foreign_key "relationships", "users"

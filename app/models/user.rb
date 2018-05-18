@@ -13,6 +13,9 @@ class User < ApplicationRecord
   
   has_many :posts
   
+  has_many :favorites
+  has_many :user_restaurants, through: :favorites, source: :restaurant
+  
   def join(group)
     self.relationships.find_or_create_by(group_id: group.id)
   end
@@ -25,5 +28,20 @@ class User < ApplicationRecord
   def join?(group)
     self.user_groups.include?(group)
   end
+  
+  def like(group, restaurant)
+    self.favorites.find_or_create_by(restaurant_id: restaurant.id, group_id: group.id)
+    
+  end
+  
+  def unlike(group, restaurant)
+    favorite = self.favorites.find_by(restaurant_id: restaurant.id, group_id: group.id)
+    favorite.destroy if favorite
+  end
+
+  def like?(restaurant, group)
+    self.favorites.find_by(group_id: group.id, restaurant_id: restaurant.id)&.restaurant_id == restaurant.id
+  end
+  
   
 end

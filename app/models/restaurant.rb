@@ -6,6 +6,8 @@ class Restaurant < ApplicationRecord
   validates :station, presence: true, length: { maximum: 10 }
   validates :phone_number, presence: true, length: { maximum: 10 }
   
+  has_many :favorites
+  
   def self.search(search)
     if search
       where(['name LIKE ?', "%#{search}%"])

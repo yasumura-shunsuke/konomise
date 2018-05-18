@@ -11,10 +11,17 @@ Rails.application.routes.draw do
     member do
       get :user_groups
       get :group_users
+      get :user_restaurants
     end
   end
-  resources :groups
+  resources :groups do
+    member do
+      get :group_retaurants
+      get :restaurant_search
+    end
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :relationships, only: [:create, :destroy]
   resources :posts, only: [:create, :destroy]
-  resources :restaurants, only: [:index, :show, :new, :create]
+  #resources :favorites, only: [:create, :destroy]
 end

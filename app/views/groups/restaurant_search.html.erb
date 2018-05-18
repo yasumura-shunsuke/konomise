@@ -1,0 +1,18 @@
+<%= form_tag(restaurant_search_group_path, :method => :get) do %>
+  <%= select_tag :restaurant_area, options_for_select([["恵比寿", "恵比寿"],["目黒","目黒"],["品川","品川"],["東京","東京"],["二子玉川","二子玉川"]]), include_blank: true %>
+  <%= label_tag :name, "お店" %><%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
+
+<h4>検索結果</h4>
+<h4>HIT件数<%= @count_restaurants %>件/10件</h4>
+
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <%= "#{restaurant.name}、" %><%= restaurant.address %>、<%= restaurant.area %>、<%= restaurant.station+'、' %><%= restaurant.phone_number %>
+    　<%= render 'favorites/like_button', restaurant: restaurant, group: @group %>
+    </li>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<% if current_user.like?(restaurant, group) %>
+    <%= link_to "行こうよを解除", group_favorites_path(group, restaurant_id: restaurant.id),
+                            method: :delete,
+                            class: "btn btn-danger" %>
+<% else %>
+    <%= link_to "行こうよ", group_favorites_path(group, restaurant_id: restaurant.id),
+                            method: :post,
+                            class: "btn btn-primary" %>      
+<% end %>

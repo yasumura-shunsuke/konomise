@@ -54,6 +54,12 @@ class GroupsController < ApplicationController
     redirect_to action: :index
   end
   
+  def restaurant_search
+    @restaurants = Restaurant.search(params[:search])
+    @count_restaurants = @restaurants.count
+    @group = Group.find(params[:id])
+  end
+  
   private
   
   def group_params

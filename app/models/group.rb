@@ -9,4 +9,10 @@ class Group < ApplicationRecord
   has_many :group_users, through: :relationships, source: :user
   
   has_many :posts, :dependent => :destroy
+  
+  has_many :favorites
+  has_many :group_retaurants, through: :favorites, source: :restaurant
+  
+  
+  
 end
