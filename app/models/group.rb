@@ -10,7 +10,7 @@ class Group < ApplicationRecord
   
   has_many :posts, :dependent => :destroy
   
-  has_many :favorites
+  has_many :favorites, :dependent => :destroy
   has_many :group_retaurants, through: :favorites, source: :restaurant
   
   

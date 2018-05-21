@@ -1,3 +1,5 @@
+<%= link_to 'グループ詳細へ', group_path(@group), class: 'btn btn-lg btn-primary' %>
+
 <%= form_tag(restaurant_search_group_path, :method => :get) do %>
   <%= select_tag :restaurant_area, options_for_select([["恵比寿", "恵比寿"],["目黒","目黒"],["品川","品川"],["東京","東京"],["二子玉川","二子玉川"]]), include_blank: true %>
   <%= label_tag :name, "お店" %><%= text_field_tag :search %>
@@ -16,3 +18,4 @@
     </li>
   <% end %>
 </div>
+

@@ -39,8 +39,8 @@ class User < ApplicationRecord
     favorite.destroy if favorite
   end
 
-  def like?(restaurant, group)
-    self.favorites.find_by(group_id: group.id, restaurant_id: restaurant.id)&.restaurant_id == restaurant.id
+  def like?(group, restaurant)
+    self.favorites.find_by(restaurant_id: restaurant.id, group_id: group.id)&.restaurant_id == restaurant.id
   end
   
   
