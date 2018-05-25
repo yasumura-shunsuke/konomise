@@ -1,6 +1,6 @@
 <%= link_to 'グループ一覧へ', groups_path, class: 'btn btn-lg btn-primary' %>
 <%= link_to "削除", @group, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-<%= link_to '編集', edit_group_path, class: 'btn btn-lg btn-primary' %>
+<%= link_to '編集', edit_group_path(@group.id), class: 'btn btn-lg btn-primary' %>
 
 <div class="text-left">
  <hr align="center">

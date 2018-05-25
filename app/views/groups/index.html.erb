@@ -4,6 +4,12 @@
   <h4>現在のグループ数 <%= @count_groups %>グループ</h4>
 </div>
 
-<%= render 'groups/groups', groups: @groups %>
+<div class="text-left">
+  <% if @groups == nil %>
+    <h3>まだグループが登録されていません</h3>
+  <% else %>
+    <%= render 'groups/groups', groups: @groups %>
+  <% end %>
+</div>
 
 <%= link_to 'サービスTOPへ', root_path, class: 'btn btn-lg btn-primary' %>

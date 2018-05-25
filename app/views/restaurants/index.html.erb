@@ -1,8 +1,9 @@
 <%= link_to 'レストラン登録画面へ', new_restaurant_path, class: 'btn btn-lg btn-primary' %>
 
   <%= form_tag(restaurants_path, :method => :get) do %>
-    <%= select_tag :restaurant_area, options_for_select([["恵比寿", "恵比寿"],["目黒","目黒"],["品川","品川"],["東京","東京"],["二子玉川","二子玉川"]]), include_blank: true %>
-    <%= label_tag :name, "お店" %><%= text_field_tag :search %>
+    <%= select_tag :restaurant_area, options_for_select(Restaurant.all.plack(:area)), include_blank: true,
+                                      selected: params[:restaurant_area] %>
+    <%= label_tag :name, "お店" %><%= text_field_tag :search, value: params[:search] %>
     <%= submit_tag 'Search', :name => nil %>
   <% end %>
 

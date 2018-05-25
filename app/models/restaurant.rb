@@ -8,11 +8,9 @@ class Restaurant < ApplicationRecord
   
   has_many :favorites
   
-  def self.search(search)
-    if search
-      where(['name LIKE ?', "%#{search}%"])
-    else
-      all
+  def self.search(param)
+    if param.present?
+      where(['name LIKE ?', "%#{param}%"])
     end
   end
 end

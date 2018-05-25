@@ -56,7 +56,13 @@ class GroupsController < ApplicationController
   end
   
   def restaurant_search
-    @restaurants = Restaurant.search(params[:search])
+    # Parameters: {"utf8"=>"✓", "restaurant_area"=>"目黒", "search"=>"焼き", "id"=>"13"}
+    # search_params{"restaurant_area"=>"目黒", "search"=>"焼き"}
+    @restaurants = Restaurant.all
+    name = params[:search]
+    area = params[:restaurant_area]
+    @restaurants = @restaurants.where(area: area) if area.present?
+    @restaurants = @restaurants.where("name like '%" + name + "%'") if name.present?
     @count_restaurants = @restaurants.count
     @group = Group.find(params[:id])
   end
